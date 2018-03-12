@@ -80,10 +80,6 @@ void draw() {
   };
   if (!Q) {
     line(x, y, z, w);
-    /*for (int g=0; g<13; g++) {
-      for (int ñ=0; ñ<4; ñ++) {
-      }
-    }*/
   };
 }
 void mousePressed () {
