@@ -74,6 +74,7 @@ void draw() {
   }
 
   M= new PVector(mouseX, mouseY);
+ //println(mouseX,"  ",mouseY);
   if (!P) {
     line(x, y, mouseX, mouseY);
   };
