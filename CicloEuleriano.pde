@@ -111,30 +111,6 @@ boolean[][] grafo = new boolean[10][10];
 
 ArrayList<PVector> puntos = new ArrayList<PVector>();
 
-/*int punto[][]=new int [10][2];
- {
- punto[0][0]=600;
- punto[0][1]=420;
- punto[1][0]=400;
- punto[1][1]=20;
- punto[2][0]=200;
- punto[2][1]=20;
- punto[3][0]=200;
- punto[3][1]=420;
- punto[4][0]=400;
- punto[4][1]=420;
- punto[5][0]=400;
- punto[5][1]=320;
- punto[6][0]=300;
- punto[6][1]=220;
- punto[7][0]=400;
- punto[7][1]=120;
- punto[8][0]=500;
- punto[8][1]=220;
- punto[9][0]=600;
- punto[9][1]=20;
- }*/
-
 ArrayList<PVector> linea = new ArrayList<PVector>();
 
 void setup() {
