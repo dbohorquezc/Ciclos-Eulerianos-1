@@ -2,6 +2,7 @@ PVector M;
 PVector A;
 boolean P;
 boolean Q;
+boolean control;
 PVector puntofinal = new PVector(0, 0);
 PVector puntoinicial = new PVector(0, 0);
 
@@ -127,6 +128,7 @@ void setup() {
   puntos.add(new PVector(600, 420));
   P=true;
   Q=true;
+  control=true;
 }
 void draw() {
   background(255);
@@ -160,27 +162,31 @@ void draw() {
 
   for (int i = 0; i<linea.size()-1; i++) {
     line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
-    if (puntoin != -1 && puntofi != -1) {
-      if (!grafo[puntoin][puntofi]){
-        linea.remove(linea.size()-1);
-      }
-    }
   }
-
+  
   M= new PVector(mouseX, mouseY);
   if (!P) {
-
     line(puntoinicial.x, puntoinicial.y, mouseX, mouseY);
   };
-  if (!Q) {
-    line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
-  };
+  if (!Q && grafo[puntoin][puntofi] != false) {
+    line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);          
+    linea.add(puntoinicial);
+    linea.add(puntofinal);
+    puntoinicial = puntofinal;
+    grafo[puntofi][puntoin]=false;
+    grafo[puntoin][puntofi]=false;          
+  }
 }
+
 void mousePressed () {
+ 
   for (int i=0; i<10; i++) {
     if (mouseX<=(puntos.get(i).x+10) && mouseX>=(puntos.get(i).x-10) && mouseY<=(puntos.get(i).y+10) && mouseY>=(puntos.get(i).y-10)) {
-      puntoinicial = puntos.get(i);
-      P=false;
+       if(control==true){
+         puntoinicial = puntos.get(i);
+         control=false;
+       }
+      P=false;  
     }
   }
 }
@@ -189,9 +195,7 @@ void mouseReleased () {
     if (mouseX<=(puntos.get(i).x+10) && mouseX>=(puntos.get(i).x-10) && mouseY<=(puntos.get(i).y+10) && mouseY>=(puntos.get(i).y-10)) {
       puntofinal = puntos.get(i);
       Q=false;
-      P=true;
-      linea.add(puntoinicial);
-      linea.add(puntofinal);
-    }
-  }
-}
+      P=true;       
+     }
+   }
+ }
