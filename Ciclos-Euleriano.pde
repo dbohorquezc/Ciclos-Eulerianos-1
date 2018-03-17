@@ -151,19 +151,17 @@ fill(0,0,200);
     nodo=45;
     println (nodo);
     }
-    
-    
-    
+    if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
+    level=1;
+    }
+    if (width/2+45<=mouseX && mouseX<=width/2+45+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
+    level=2;
+    }    
+    if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/3-40<=mouseY && mouseY<=height*2/3-40+60) {
+    level=4;
+    }
 }
-  
-if(mousePressed) {
-if (width/2-110/2<=mouseX && mouseX<=width/2-110/2+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
-  level=1;
-}
-if (width/2-110/2<=mouseX && mouseX<=width/2-110/2+110 && height*3/4-70/2<=mouseY && mouseY<=height*3/4-70/2+60) {
-  level=2;
-}
-}
+
 break;
   case 1: 
       background(255);
@@ -280,7 +278,7 @@ if (!Q && grafok[puntoin][puntofi] != 0) {
 break;
 case 3:
 fill(80);
-  quad(0,0,800,0,800,600,0,600);
+  quad(0,0,800,0,800,800,0,800);
    fill(0);
    textAlign(CENTER);
    textSize(56);
@@ -392,13 +390,11 @@ puntos3.add(new PVector(200, 450));
 puntos3.add(new PVector(600, 450));
 puntos3.add(new PVector(200, 550));
 puntos3.add(new PVector(600, 550));
-println(puntos3.size());
 nodo=20;
 P=true;
 Q=true;
 control=true;
  }
-
 
 void draw() {
 nivel(level);
