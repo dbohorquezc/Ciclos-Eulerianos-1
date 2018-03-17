@@ -427,7 +427,7 @@ break;
   case 3:
   break;
   case 4:
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<9; i++) {
   if (mouseX<=(puntos3.get(i).x+10) && mouseX>=(puntos3.get(i).x-10) && mouseY<=(puntos3.get(i).y+10) && mouseY>=(puntos3.get(i).y-10)) {
      if(control==true){
     puntoinicial = puntos3.get(i);
@@ -465,7 +465,7 @@ for (int i=0; i<10; i++) {
   case 3:
   break;
   case 4:
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<9; i++) {
   if (mouseX<=(puntos3.get(i).x+10) && mouseX>=(puntos3.get(i).x-10) && mouseY<=(puntos3.get(i).y+10) && mouseY>=(puntos3.get(i).y-10)) {
     puntofinal = puntos3.get(i);
     Q=false;
