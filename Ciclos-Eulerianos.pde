@@ -5,10 +5,12 @@ boolean Q;
 boolean control;
 PVector puntofinal = new PVector(0, 0);
 PVector puntoinicial = new PVector(0, 0);
+PVector puntoprueba = new PVector(0, 0);
 int level = 0;
 int puntoin;
 int puntofi;
 int nodo;
+int pruebamouse;
 boolean algo = true;
 
 int[][] grafo1 ={
@@ -104,7 +106,7 @@ void llenar_matriz(int[][] grafito1, int[][]grafito2, int a) {
 }
 
 //botón de reinicio
-void reiniciar(int[][] grafito3, int[][] grafito4, int a) {
+void reiniciar(int[][] grafito3, int[][] grafito4, int z) {
   strokeWeight(2);
   stroke(0, 0, 0);
   fill(41, 74, 255);
@@ -123,17 +125,19 @@ void reiniciar(int[][] grafito3, int[][] grafito4, int a) {
       for (int i = linea2.size() - 1; i >= 0; i--) {
         linea2.remove(i);
       }
-      llenar_matriz(grafito3, grafito4, a);
+      llenar_matriz(grafito3, grafito4, z);
       control=true;
       puntofi=-1;
       puntoin=-1;
-      algo=true;      
+      algo=true; 
+      //puntoinicial.x=0;
+      //puntoinicial.y=0;
     }
   }
 }
 
 //Botón de volver al menú
-void home(int[][] grafito5, int[][] grafito6, int b) {
+void home() {
   strokeWeight(2);
   stroke(0, 0, 0);
   fill(41, 74, 255);
@@ -151,7 +155,6 @@ void home(int[][] grafito5, int[][] grafito6, int b) {
       for (int i = linea2.size() - 1; i >= 0; i--) {
         linea2.remove(i);
       }
-      llenar_matriz(grafito5, grafito6, b);
       control=true;
       puntofi=-1;
       puntoin=-1;
@@ -247,10 +250,17 @@ void jugar2(int[][] grafito8) {
 void mouse1(ArrayList<PVector>punticos, int d) {
   for (int i=0; i<d; i++) {
     if (mouseX<=(punticos.get(i).x+nodo) && mouseX>=(punticos.get(i).x-nodo) && mouseY<=(punticos.get(i).y+nodo) && mouseY>=(punticos.get(i).y-nodo)) {
-      if (control==true) {
-        puntoinicial = punticos.get(i);
+      switch(pruebamouse) {
+        case 0:
+        if (control==true) {
+          puntoinicial = punticos.get(i);
       }
       P=false;
+        break;
+        case 1:
+        pruebamouse=0;
+        break;
+      }
     }
   }
 }
@@ -259,12 +269,21 @@ void mouse1(ArrayList<PVector>punticos, int d) {
 void mouse2(ArrayList<PVector>punticos2, int e) {
   for (int i=0; i<e; i++) {
     if (mouseX<=(punticos2.get(i).x+nodo) && mouseX>=(punticos2.get(i).x-nodo) && mouseY<=(punticos2.get(i).y+nodo) && mouseY>=(punticos2.get(i).y-nodo)) {
-      puntofinal = punticos2.get(i);
-      Q=false;
-      P=true;
+      puntoprueba = punticos2.get(i);
+      if (puntoinicial.x!=puntoprueba.x || puntoinicial.y!=puntoprueba.y) {
+        puntofinal = punticos2.get(i);
+        Q=false;
+        P=true;
+        pruebamouse=0;
+      }
+      if (puntoinicial.x==puntoprueba.x && puntoinicial.y==puntoprueba.y) {
+        P=true;
+        pruebamouse=1;
+      }
     }
   }
 }
+
 
 void nivel(int a)
 {
@@ -403,7 +422,7 @@ void nivel(int a)
     lineamouse(); 
     jugar(grafoa);
     reiniciar(grafoa, grafo1, 10);
-    home(grafoa, grafo1, 10);
+    home();
     break;
 
   case 2:      
@@ -444,7 +463,7 @@ void nivel(int a)
     jugar(grafos);
     lineamouse();
     reiniciar(grafos, grafo2, 8);
-    home(grafos, grafo2, 8);
+    home();
     break;
   case 3: 
     background(55, 84, 243);
@@ -511,7 +530,7 @@ void nivel(int a)
     jugar(grafod);
     lineamouse();
     reiniciar(grafod, grafo3, 9);
-    home(grafod, grafo3, 9);
+    home();
     break;
   case 5:
     background(255);
@@ -554,7 +573,7 @@ void nivel(int a)
     stroke(50, 255, 0);
     dibujar2();
     reiniciar(grafof, grafo4, 8);
-    home(grafof, grafo4, 8);
+    home();
     break;
   case 6:
     background(255);
@@ -591,7 +610,7 @@ void nivel(int a)
     stroke(255, 131, 0);
     dibujar2();
     reiniciar(grafog, grafo5, 7);
-    home(grafog, grafo5, 7);
+    home();
     break;
   case 7:
     background(255);
@@ -626,7 +645,7 @@ void nivel(int a)
     stroke(50, 255, 0);
     dibujar2();
     reiniciar(grafoh, grafo6, 6);
-    home(grafoh, grafo6, 6);
+    home();
     break;
   }
 }
