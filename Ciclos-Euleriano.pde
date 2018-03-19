@@ -9,49 +9,74 @@ int level = 0;
 int puntoin;
 int puntofi;
 int nodo;
+boolean algo = true;
 
-int[][] grafo = new int[10][10];
-{
-grafo[0][0] = 0;  grafo[0][1] = 1;  grafo[0][2] = 0;  grafo[0][3] = 0;  grafo[0][4] = 0;  grafo[0][5] = 0;  grafo[0][6] = 0;  grafo[0][7] = 1;  grafo[0][8] = 0;  grafo[0][9] = 0;
-grafo[1][0] = 1;  grafo[1][1] = 0;  grafo[1][2] = 1;  grafo[1][3] = 1;  grafo[1][4] = 0;  grafo[1][5] = 0;  grafo[1][6] = 0;  grafo[1][7] = 0;  grafo[1][8] = 0;  grafo[1][9] = 0;
-grafo[2][0] = 0;  grafo[2][1] = 1;  grafo[2][2] = 0;  grafo[2][3] = 0;  grafo[2][4] = 0;  grafo[2][5] = 0;  grafo[2][6] = 0;  grafo[2][7] = 0;  grafo[2][8] = 0;  grafo[2][9] = 1;
-grafo[3][0] = 0;  grafo[3][1] = 1;  grafo[3][2] = 0;  grafo[3][3] = 0;  grafo[3][4] = 1;  grafo[3][5] = 1;  grafo[3][6] = 1;  grafo[3][7] = 0;  grafo[3][8] = 0;  grafo[3][9] = 0;
-grafo[4][0] = 0;  grafo[4][1] = 0;  grafo[4][2] = 0;  grafo[4][3] = 1;  grafo[4][4] = 0;  grafo[4][5] = 0;  grafo[4][6] = 1;  grafo[4][7] = 0;  grafo[4][8] = 0;  grafo[4][9] = 0;
-grafo[5][0] = 0;  grafo[5][1] = 0;  grafo[5][2] = 0;  grafo[5][3] = 1;  grafo[5][4] = 0;  grafo[5][5] = 0;  grafo[5][6] = 1;  grafo[5][7] = 0;  grafo[5][8] = 0;  grafo[5][9] = 0;
-grafo[6][0] = 0;  grafo[6][1] = 0;  grafo[6][2] = 0;  grafo[6][3] = 1;  grafo[6][4] = 1;  grafo[6][5] = 1;  grafo[6][6] = 0;  grafo[6][7] = 0;  grafo[6][8] = 1;  grafo[6][9] = 0;
-grafo[7][0] = 1;  grafo[7][1] = 0;  grafo[7][2] = 0;  grafo[7][3] = 1;  grafo[7][4] = 0;  grafo[7][5] = 0;  grafo[7][6] = 0;  grafo[7][7] = 0;  grafo[7][8] = 1;  grafo[7][9] = 0;
-grafo[8][0] = 0;  grafo[8][1] = 0;  grafo[8][2] = 0;  grafo[8][3] = 0;  grafo[8][4] = 0;  grafo[8][5] = 0;  grafo[8][6] = 1;  grafo[8][7] = 1;  grafo[8][8] = 0;  grafo[8][9] = 1;
-grafo[9][0] = 0;  grafo[9][1] = 0;  grafo[9][2] = 1;  grafo[9][3] = 0;  grafo[9][4] = 0;  grafo[9][5] = 0;  grafo[9][6] = 0;  grafo[9][7] = 0;  grafo[9][8] = 1;  grafo[9][9] = 0;
-}
-
-int[][] grafo2 = new int[8][8];
-{
-grafo2[0][0] = 0;  grafo2[0][1] = 1;  grafo2[0][2] = 0;  grafo2[0][3] = 1;  grafo2[0][4] = 0;  grafo2[0][5] = 0;  grafo2[0][6] = 0;  grafo2[0][7] = 0;
-grafo2[1][0] = 1;  grafo2[1][1] = 0;  grafo2[1][2] = 1;  grafo2[1][3] = 1;  grafo2[1][4] = 1;  grafo2[1][5] = 1;  grafo2[1][6] = 1;  grafo2[1][7] = 0;
-grafo2[2][0] = 0;  grafo2[2][1] = 1;  grafo2[2][2] = 0;  grafo2[2][3] = 0;  grafo2[2][4] = 1;  grafo2[2][5] = 1;  grafo2[2][6] = 1;  grafo2[2][7] = 0;
-grafo2[3][0] = 1;  grafo2[3][1] = 1;  grafo2[3][2] = 0;  grafo2[3][3] = 0;  grafo2[3][4] = 1;  grafo2[3][5] = 1;  grafo2[3][6] = 0;  grafo2[3][7] = 0;
-grafo2[4][0] = 0;  grafo2[4][1] = 1;  grafo2[4][2] = 1;  grafo2[4][3] = 1;  grafo2[4][4] = 0;  grafo2[4][5] = 0;  grafo2[4][6] = 0;  grafo2[4][7] = 1;
-grafo2[5][0] = 0;  grafo2[5][1] = 1;  grafo2[5][2] = 1;  grafo2[5][3] = 1;  grafo2[5][4] = 0;  grafo2[5][5] = 0;  grafo2[5][6] = 1;  grafo2[5][7] = 0;
-grafo2[6][0] = 0;  grafo2[6][1] = 1;  grafo2[6][2] = 1;  grafo2[6][3] = 0;  grafo2[6][4] = 0;  grafo2[6][5] = 1;  grafo2[6][6] = 0;  grafo2[6][7] = 1;
-grafo2[7][0] = 0;  grafo2[7][1] = 0;  grafo2[7][2] = 0;  grafo2[7][3] = 0;  grafo2[7][4] = 1;  grafo2[7][5] = 0;  grafo2[7][6] = 1;  grafo2[7][7] = 0;
- }
-
-int[][] grafo3= new int[9][9];
-{
-grafo3[0][0] = 0;  grafo3[0][1] = 1;  grafo3[0][2] = 1;  grafo3[0][3] = 0;  grafo3[0][4] = 0;  grafo3[0][5] = 0;  grafo3[0][6] = 0;  grafo3[0][7] = 0;  grafo3[0][8] = 0;
-grafo3[1][0] = 1;  grafo3[1][1] = 0;  grafo3[1][2] = 0;  grafo3[1][3] = 1;  grafo3[1][4] = 1;  grafo3[1][5] = 0;  grafo3[1][6] = 0;  grafo3[1][7] = 0;  grafo3[1][8] = 0;  
-grafo3[2][0] = 1;  grafo3[2][1] = 0;  grafo3[2][2] = 0;  grafo3[2][3] = 1;  grafo3[2][4] = 1;  grafo3[2][5] = 0;  grafo3[2][6] = 0;  grafo3[2][7] = 0;  grafo3[2][8] = 0; 
-grafo3[3][0] = 0;  grafo3[3][1] = 1;  grafo3[3][2] = 1;  grafo3[3][3] = 0;  grafo3[3][4] = 0;  grafo3[3][5] = 1;  grafo3[3][6] = 1;  grafo3[3][7] = 0;  grafo3[3][8] = 0;  
-grafo3[4][0] = 0;  grafo3[4][1] = 1;  grafo3[4][2] = 1;  grafo3[4][3] = 0;  grafo3[4][4] = 0;  grafo3[4][5] = 1;  grafo3[4][6] = 1;  grafo3[4][7] = 0;  grafo3[4][8] = 0; 
-grafo3[5][0] = 0;  grafo3[5][1] = 0;  grafo3[5][2] = 0;  grafo3[5][3] = 1;  grafo3[5][4] = 1;  grafo3[5][5] = 0;  grafo3[5][6] = 0;  grafo3[5][7] = 1;  grafo3[5][8] = 1;  
-grafo3[6][0] = 0;  grafo3[6][1] = 0;  grafo3[6][2] = 0;  grafo3[6][3] = 1;  grafo3[6][4] = 1;  grafo3[6][5] = 0;  grafo3[6][6] = 0;  grafo3[6][7] = 1;  grafo3[6][8] = 1;  
-grafo3[7][0] = 0;  grafo3[7][1] = 0;  grafo3[7][2] = 0;  grafo3[7][3] = 0;  grafo3[7][4] = 0;  grafo3[7][5] = 1;  grafo3[7][6] = 1;  grafo3[7][7] = 0;  grafo3[7][8] = 0; 
-grafo3[8][0] = 0;  grafo3[8][1] = 0;  grafo3[8][2] = 0;  grafo3[8][3] = 0;  grafo3[8][4] = 0;  grafo3[8][5] = 1;  grafo3[8][6] = 1;  grafo3[8][7] = 0;  grafo3[8][8] = 0; 
-}
-
-int[][] grafoj = new int[10][10];
-int[][] grafok = new int[8][8];
-int[][] grafol = new int[9][9];
+int[][] grafo1 ={
+  {0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 
+  {1, 0, 1, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 1, 0, 0, 0, 0, 0, 0, 0, 1}, 
+  {0, 1, 0, 0, 1, 1, 1, 0, 0, 0}, 
+  {0, 0, 0, 1, 0, 0, 1, 0, 0, 0}, 
+  {0, 0, 0, 1, 0, 0, 1, 0, 0, 0}, 
+  {0, 0, 0, 1, 1, 1, 0, 0, 1, 0}, 
+  {1, 0, 0, 0, 0, 0, 0, 0, 1, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 1, 0, 1}, 
+  {0, 0, 1, 0, 0, 0, 0, 0, 1, 0}
+};
+int[][] grafo2 ={
+  {0, 1, 0, 1, 0, 0, 0, 0}, 
+  {1, 0, 1, 1, 1, 1, 1, 0}, 
+  {0, 1, 0, 0, 1, 1, 1, 0}, 
+  {1, 1, 0, 0, 1, 1, 0, 0}, 
+  {0, 1, 1, 1, 0, 0, 0, 1}, 
+  {0, 1, 1, 1, 0, 0, 1, 0}, 
+  {0, 1, 1, 0, 0, 1, 0, 1}, 
+  {0, 0, 0, 0, 1, 0, 1, 0}
+};
+int[][] grafo3={
+  {0, 1, 1, 0, 0, 0, 0, 0, 0}, 
+  {1, 0, 0, 1, 1, 0, 0, 0, 0}, 
+  {1, 0, 0, 1, 1, 0, 0, 0, 0}, 
+  {0, 1, 1, 0, 0, 1, 1, 0, 0}, 
+  {0, 1, 1, 0, 0, 1, 1, 0, 0}, 
+  {0, 0, 0, 1, 1, 0, 0, 1, 1}, 
+  {0, 0, 0, 1, 1, 0, 0, 1, 1}, 
+  {0, 0, 0, 0, 0, 1, 1, 0, 0}, 
+  {0, 0, 0, 0, 0, 1, 1, 0, 0}
+};
+int[][] grafo4={  
+  {0, 0, 2, 1, 0, 0, 0, 0}, 
+  {0, 0, 0, 1, 0, 1, 0, 0}, 
+  {2, 0, 0, 1, 1, 0, 1, 0}, 
+  {1, 1, 1, 0, 0, 1, 0, 0}, 
+  {0, 0, 1, 0, 0, 1, 1, 1}, 
+  {0, 1, 0, 1, 1, 0, 0, 1}, 
+  {0, 0, 1, 0, 1, 0, 0, 0}, 
+  {0, 0, 0, 0, 1, 1, 0, 0}
+};
+int[][] grafo5={
+  {0, 1, 1, 0, 0, 0, 0}, 
+  {1, 0, 1, 1, 1, 0, 0}, 
+  {1, 1, 0, 1, 0, 0, 1}, 
+  {0, 1, 1, 0, 0, 2, 0}, 
+  {0, 1, 0, 0, 0, 1, 0}, 
+  {0, 0, 0, 2, 1, 0, 1}, 
+  {0, 0, 1, 0, 0, 1, 0}
+};
+int[][] grafo6={
+  {0, 1, 0, 0, 1, 0}, 
+  {1, 0, 1, 0, 0, 2}, 
+  {0, 1, 0, 1, 0, 1}, 
+  {0, 0, 1, 0, 1, 1}, 
+  {1, 0, 0, 1, 0, 0}, 
+  {0, 2, 1, 1, 0, 0}
+};
+int[][] grafoa = new int[10][10];
+int[][] grafos = new int[8][8];
+int[][] grafod = new int[9][9];
+int[][] grafof = new int[8][8];
+int[][] grafog = new int[7][7];
+int[][] grafoh = new int[6][6];
 
 ArrayList<PVector> puntos = new ArrayList<PVector>();
 
@@ -59,419 +84,661 @@ ArrayList<PVector> puntos2 = new ArrayList<PVector>();
 
 ArrayList<PVector> puntos3 = new ArrayList<PVector>();
 
+ArrayList<PVector> puntos4 = new ArrayList<PVector>();
+
+ArrayList<PVector> puntos5 = new ArrayList<PVector>();
+
+ArrayList<PVector> puntos6 = new ArrayList<PVector>();
+
 ArrayList<PVector> linea = new ArrayList<PVector>();
 
-void grafoiq(){
-  grafoj=grafo;
+ArrayList<PVector> linea2 = new ArrayList<PVector>();
+
+//Función de llenar matrices de grafos
+void llenar_matriz(int[][] grafito1, int[][]grafito2, int a) {
+  for (int i = 0; i<a; i++) {
+    for (int j = 0; j<a; j++) {
+      grafito1[i][j] = grafito2[i][j];
+    }
+  }
 }
- void nivel(int a)
+
+//botón de reinicio
+void reiniciar(int[][] grafito3, int[][] grafito4, int a) {
+  strokeWeight(2);
+  stroke(0, 0, 0);
+  fill(41, 74, 255);
+  ellipse(710, 40, 35, 35);
+  stroke(255, 255, 255);
+  fill(255, 255, 255);
+  triangle(699, 41, 702, 44, 705, 41);
+  noFill(); 
+  strokeWeight(3);
+  arc(710, 40, 15, 15, -PI, PI/2);
+  if (mousePressed) {
+    if (710-17<=mouseX && mouseX<=710+17 && 40-17<=mouseY && mouseY<=40+17) {
+      for (int i = linea.size() - 1; i >= 0; i--) {
+        linea.remove(i);
+      }
+      for (int i = linea2.size() - 1; i >= 0; i--) {
+        linea2.remove(i);
+      }
+      llenar_matriz(grafito3, grafito4, a);
+      control=true;
+      puntofi=-1;
+      puntoin=-1;
+      algo=true;      
+    }
+  }
+}
+
+//Botón de volver al menú
+void home(int[][] grafito5, int[][] grafito6, int b) {
+  strokeWeight(2);
+  stroke(0, 0, 0);
+  fill(41, 74, 255);
+  ellipse(760, 40, 35, 35);
+  stroke(255, 255, 255);
+  fill(255, 255, 255);
+  rect(755, 37, 10, 10, 1);
+  triangle(753, 37, 767, 37, 760, 31);
+  if (mousePressed) {
+    if (760-17<=mouseX && mouseX<=760+17 && 40-17<=mouseY && mouseY<=40+17) {
+      level=0;
+      for (int i = linea.size() - 1; i >= 0; i--) {
+        linea.remove(i);
+      }
+      for (int i = linea2.size() - 1; i >= 0; i--) {
+        linea2.remove(i);
+      }
+      llenar_matriz(grafito5, grafito6, b);
+      control=true;
+      puntofi=-1;
+      puntoin=-1;
+      algo=true;
+    }
+  }
+}
+
+//Función para ver la linea que se dibuja
+void lineamouse() {
+  if (!P) {
+    line(puntoinicial.x, puntoinicial.y, mouseX, mouseY);
+  }
+}
+
+//lineas hechas
+void dibujar() {
+  for (int i = 0; i<linea.size()-1; i++) {
+    line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
+  }
+}
+
+//Lineas de camino donde se pueden dibujar dos veces
+
+void dibujar2() {
+  for (int i = 0; i<linea2.size()-1; i++) {
+    line(linea2.get(i).x, linea2.get(i).y, linea2.get(i+1).x, linea2.get(i+1).y);
+  }
+}
+
+//Función de ganar
+void ganar(int c) {
+  if (linea.size()==c) {
+    level=3;
+  }
+}
+
+//Función del juego
+void jugar(int[][] grafito7) {
+  if (puntoin!=-1 && puntofi!=-1) {
+    if (!Q && grafito7[puntoin][puntofi] != 0) {
+      line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
+      linea.add(puntoinicial);
+      linea.add(puntofinal);
+      grafito7[puntofi][puntoin] = grafito7[puntofi][puntoin]-1;
+      grafito7[puntoin][puntofi] = grafito7[puntoin][puntofi]-1;
+      control=false;
+      if (linea.size()>1) {         
+        puntoinicial = puntofinal;
+      }
+    }
+  }
+}
+
+//Función del juego para niveles con doble linea
+void jugar2(int[][] grafito8) {
+  if (puntoin!=-1 && puntofi!=-1) {
+    if (!Q && grafito8[puntoin][puntofi] == 1) {      
+      PVector prueba = puntoinicial;
+      PVector prueba2 = puntofinal;
+      for (int i=0; i<linea2.size()-1; i++) {
+        if (linea2.indexOf(prueba)!=-1 && linea2.indexOf(prueba2)!=-1 ) {
+          linea2.remove(prueba);
+          linea2.remove(prueba2);
+        }
+      }
+      line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
+      linea.add(puntoinicial);
+      linea.add(puntofinal);
+      grafito8[puntofi][puntoin] = grafito8[puntofi][puntoin]-1;
+      grafito8[puntoin][puntofi] = grafito8[puntoin][puntofi]-1;
+      control=false;
+      if (linea.size()>1) {         
+        puntoinicial = puntofinal;
+      }
+    }
+    if (!Q && grafito8[puntoin][puntofi] == 2) {
+      line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
+      linea2.add(puntoinicial);
+      linea2.add(puntofinal);
+      linea.add(puntoinicial);
+      linea.add(puntofinal);
+      grafito8[puntofi][puntoin] = grafito8[puntofi][puntoin]-1;
+      grafito8[puntoin][puntofi] = grafito8[puntoin][puntofi]-1;
+      control=false;
+      if (linea.size()>1) {         
+        puntoinicial = puntofinal;
+      }
+    }
+  }
+}
+//función del mouse presionado
+void mouse1(ArrayList<PVector>punticos, int d) {
+  for (int i=0; i<d; i++) {
+    if (mouseX<=(punticos.get(i).x+nodo) && mouseX>=(punticos.get(i).x-nodo) && mouseY<=(punticos.get(i).y+nodo) && mouseY>=(punticos.get(i).y-nodo)) {
+      if (control==true) {
+        puntoinicial = punticos.get(i);
+      }
+      P=false;
+    }
+  }
+}
+
+//Funcion de soltar el mouse
+void mouse2(ArrayList<PVector>punticos2, int e) {
+  for (int i=0; i<e; i++) {
+    if (mouseX<=(punticos2.get(i).x+nodo) && mouseX>=(punticos2.get(i).x-nodo) && mouseY<=(punticos2.get(i).y+nodo) && mouseY>=(punticos2.get(i).y-nodo)) {
+      puntofinal = punticos2.get(i);
+      Q=false;
+      P=true;
+    }
+  }
+}
+
+void nivel(int a)
 {
-switch(a){
-case 0:
-    background(100);    
-fill(0,0,200);
-    rect(width/2-155,height*2/4-70/2,110,60,15);
-    fill(255, 204, 0);
-    rect(width/2-155,height*2/3-40,110,60,15);      
-    fill(5, 75, 80, 80);
-    fill(0,100,0);
-    rect(width/2+45,height*2/4-70/2,110,60,15);
-    fill(150,50,30);
-    rect(width/2+45,height*2/3-40,110,60,15);
-    fill(30, 155, 130);
-    rect(width/2-55,height*3/4,110,60,15);
-    fill(0);
+  switch(a) {
+  case 0:
+    background(210, 249, 234);
+    //background(0, 255, 255);
+    strokeWeight(1);
+    stroke(0, 0, 0);
+    fill(247, 255, 0);
+    rect(width/2-155, height*2/4-70/2, 110, 60, 15);
+    rect(width/2-155, height*2/3-40, 110, 60, 15);
+    rect(width/2+45, height*2/4-70/2, 110, 60, 15);
+    fill(35, 255, 0);
+    rect(width/2+45, height*2/3-40, 110, 60, 15);
+    rect(width/2-155, height*3/4, 110, 60, 15);
+    rect(width/2+45, height*3/4, 110, 60, 15);
+    fill(0,0,0);
     textSize(50);
     textAlign(CENTER);   
     textSize(56);
-    text("¡Bienvenido a Connect!", width*1/2,height*1/4 );
+    text("¡Bienvenido a Connect!", width*1/2, height*1/4 );
     textSize(28);
+    //stroke(255, 0, 0);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    fill(0, 0, 0);
     text("Nivel 1", width/2-100, height*2/4);
-    text("Nivel 3", width/2-100, height*2/3);
     text("Nivel 2", width/2+100, height*2/4);
+    text("Nivel 3", width/2-100, height*2/3);
+    fill(0, 0, 0);
+    text("Nivel 5", width/2-100, height*3/4+40);
     text("Nivel 4", width/2+100, height*2/3);
-    text("Nivel 5", width/2, height*3/4+40);
+    text("Nivel 6", width/2+100, height*3/4+40);
     textAlign(CENTER);
     textSize(16);
-    text("Elija el tamaño",width*1/10,height*2/4);
-    text("de los nodos:",width*1/10,height*2/4+15);
-    
-    fill(150);
-    rect(width*1/35,height*2/4+30,30,30);
-    rect(width*1/35+50,height*2/4+30,30,30);
-    rect(width*1/35+100,height*2/4+30,30,30);
-    rect(width*1/35,height*2/4+80,30,30);
-    rect(width*1/35+50,height*2/4+80,30,30);
-    rect(width*1/35+100,height*2/4+80,30,30);
-    rect(width*1/35,height*2/4+130,30,30);
-    rect(width*1/35+50,height*2/4+130,30,30);
-    rect(width*1/35+100,height*2/4+130,30,30);
-    fill(0);
-    text("5",width*1/35+15,height*2/4+50);
-    text("10",width*1/35+65,height*2/4+50);
-    text("15",width*1/35+115,height*2/4+50);
-    text("20",width*1/35+15,height*2/4+100);
-    text("25",width*1/35+65,height*2/4+100);
-    text("30",width*1/35+115,height*2/4+100);
-    text("35",width*1/35+15,height*2/4+150);
-    text("40",width*1/35+65,height*2/4+150);
-    text("45",width*1/35+115,height*2/4+150);
-    if(mousePressed) {
-    if(width*1/35<=mouseX && mouseX<=width*1/35+30 && height*2/4+30<=mouseY && mouseY<=height*2/4+60){
-    nodo=5;
+    fill(0, 0, 0);
+    text("Elija el tamaño", width*1/9, height*2/4+30);
+    text("de los nodos:", width*1/9, height*2/4+45);
+    //fill(131, 0, 211);
+    fill(0, 0, 255);
+    rect(width*1/35, height*2/4+80, 30, 30);
+    rect(width*1/35+50, height*2/4+80, 30, 30);
+    rect(width*1/35+100, height*2/4+80, 30, 30);
+    rect(width*1/35, height*2/4+130, 30, 30);
+    rect(width*1/35+50, height*2/4+130, 30, 30);
+    rect(width*1/35+100, height*2/4+130, 30, 30);
+    fill(255, 255, 255);
+    text("20", width*1/35+15, height*2/4+100);
+    text("25", width*1/35+65, height*2/4+100);
+    text("30", width*1/35+115, height*2/4+100);
+    text("35", width*1/35+15, height*2/4+150);
+    text("40", width*1/35+65, height*2/4+150);
+    text("45", width*1/35+115, height*2/4+150);
+    if (mousePressed) {
+      if (width*1/35<=mouseX && mouseX<=width*1/35+30 && height*2/4+80<=mouseY && mouseY<=height*2/4+110) {
+        nodo=20;
+        println (nodo);
+      }
+      if (width*1/35+50<=mouseX && mouseX<=width*1/35+80 && height*2/4+80<=mouseY && mouseY<=height*2/4+110) {
+        nodo=25;
+        println (nodo);
+      }
+      if (width*1/35+100<=mouseX && mouseX<=width*1/35+130 && height*2/4+80<=mouseY && mouseY<=height*2/4+110) {
+        nodo=30;
+        println (nodo);
+      }
+      if (width*1/35<=mouseX && mouseX<=width*1/35+30 && height*2/4+130<=mouseY && mouseY<=height*2/4+160) {
+        nodo=35;
+        println (nodo);
+      }
+      if (width*1/35+30<=mouseX && mouseX<=width*1/35+80 && height*2/4+130<=mouseY && mouseY<=height*2/4+160) {
+        nodo=40;
+        println (nodo);
+      }
+      if (width*1/35+100<=mouseX && mouseX<=width*1/35+130 && height*2/4+130<=mouseY && mouseY<=height*2/4+160) {
+        nodo=45;
+        println (nodo);
+      }
+      if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
+        level=1;
+      }
+      if (width/2+45<=mouseX && mouseX<=width/2+45+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
+        level=2;
+      }    
+      if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/3-40<=mouseY && mouseY<=height*2/3-40+60) {
+        level=4;
+      }
+      if (width/2+45<=mouseX && mouseX<=width/2+45+110 && height*2/3-40<=mouseY && mouseY<=height*2/3-40+60) {
+        level=5;
+      }
+      if (width/2-155<=mouseX && mouseX<=width/2-45 && height*3/4<=mouseY && mouseY<=height*3/4+60) {
+        level=6;
+      }
+      if (width/2+45<=mouseX && mouseX<=width/2+45+110 && height*3/4<=mouseY && mouseY<=height*3/4+60) {
+        level=7;
+      }
     }
-    if(width*1/35+50<=mouseX && mouseX<=width*1/35+80 && height*2/4+30<=mouseY && mouseY<=height*2/4+60){
-    nodo=10;
-    }
-    if(width*1/35+100<=mouseX && mouseX<=width*1/35+130 && height*2/4+30<=mouseY && mouseY<=height*2/4+60){
-    nodo=15;
-    println (nodo);
-    }
-    if(width*1/35<=mouseX && mouseX<=width*1/35+30 && height*2/4+80<=mouseY && mouseY<=height*2/4+110){
-    nodo=20;
-    println (nodo);
-    }
-    if(width*1/35+50<=mouseX && mouseX<=width*1/35+80 && height*2/4+80<=mouseY && mouseY<=height*2/4+110){
-    nodo=25;
-    println (nodo);
-    }
-    if(width*1/35+100<=mouseX && mouseX<=width*1/35+130 && height*2/4+80<=mouseY && mouseY<=height*2/4+110){
-    nodo=30;
-    println (nodo);
-    }
-    if(width*1/35<=mouseX && mouseX<=width*1/35+30 && height*2/4+130<=mouseY && mouseY<=height*2/4+160){
-    nodo=35;
-    println (nodo);
-    }
-    if(width*1/35+30<=mouseX && mouseX<=width*1/35+80 && height*2/4+130<=mouseY && mouseY<=height*2/4+160){
-    nodo=40;
-    println (nodo);
-    }
-    if(width*1/35+100<=mouseX && mouseX<=width*1/35+130 && height*2/4+130<=mouseY && mouseY<=height*2/4+160){
-    nodo=45;
-    println (nodo);
-    }
-    if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
-    level=1;
-    }
-    if (width/2+45<=mouseX && mouseX<=width/2+45+110 && height*2/4-70/2<=mouseY && mouseY<=height*2/4-70/2+60) {
-    level=2;
-    }    
-    if (width/2-155<=mouseX && mouseX<=width/2-155+110 && height*2/3-40<=mouseY && mouseY<=height*2/3-40+60) {
-    level=4;
-    }
-}
 
-break;
+    break;
   case 1: 
-      background(255);
-/*grafoj = grafo;*/
-grafoiq();
-puntoin = puntos.indexOf(puntoinicial);
-puntofi = puntos.indexOf(puntofinal);
-strokeWeight(8);
-stroke(208, 206, 212);
-line(200, 20, 600, 20);
-line(200, 20, 200, 420);
-line(400, 20, 400, 420);
-line(200, 420, 600, 420);
-line(600, 20, 600, 420);
-line(400, 320, 300, 220);
-line(300, 220, 400, 120);
-line(400, 120, 500, 220);
-line(500, 220, 400, 320);
-stroke(255, 0, 0);
-strokeWeight(10);
-fill(0);
-ellipse(400, 20, nodo, nodo);
-ellipse(200, 20, nodo, nodo);
-ellipse(200, 420, nodo, nodo);
-ellipse(400, 420, nodo, nodo);
-ellipse(400, 320, nodo, nodo);
-ellipse(300, 220, nodo, nodo);
-ellipse(400, 120, nodo, nodo);
-ellipse(500, 220, nodo, nodo);
-ellipse(600, 20, nodo, nodo);
-ellipse(600, 420, nodo, nodo);
-
-for (int i = 0; i<linea.size()-1; i++) {
-  line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
- }
- 
-
- if (linea.size()==26){
-   level=3;
- }
- 
-
-M= new PVector(mouseX, mouseY);
-if (!P) {
-
-  line(puntoinicial.x, puntoinicial.y, mouseX, mouseY);
-};
-if (!Q && grafoj[puntoin][puntofi] != 0) {
-  line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
-        linea.add(puntoinicial);
-        linea.add(puntofinal);
-        puntoinicial = puntofinal;
-        grafoj[puntofi][puntoin]--;
-        grafoj[puntoin][puntofi]--;
-        
- }
- 
-break;
-  case 2:
-  background(255);
-grafok = grafo2;
-puntoin = puntos2.indexOf(puntoinicial);
-puntofi = puntos2.indexOf(puntofinal);
-strokeWeight(8);
-stroke(208, 206, 212);
-line(200, 20, 600, 20);
-line(200, 20, 200, 420);
-line(400, 20, 400, 420);
-line(200, 420, 600, 420);
-line(600, 20, 600, 420);
-line(200, 220, 600, 220);
-line(400, 20, 200, 220);
-line(400, 20, 200, 420);
-line(600, 20, 200, 420);
-line(600, 20, 400, 420);
-line(400, 20, 600, 220);
-stroke(255, 0, 0);
-strokeWeight(10);
-fill(0);
-ellipse(400, 20, nodo, nodo);
-ellipse(200, 20, nodo, nodo);
-ellipse(200, 420, nodo, nodo);
-ellipse(400, 420, nodo, nodo);
-ellipse(600, 20, nodo, nodo);
-ellipse(600, 420, nodo, nodo);
-ellipse(200, 220, nodo, nodo);
-ellipse(600, 220, nodo, nodo);
-
-for (int i = 0; i<linea.size()-1; i++) {
-  line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
- }
- 
-
- if (linea.size()==30){
-level=3;
- }
- 
-
-M= new PVector(mouseX, mouseY);
-if (!P) {
-
-  line(puntoinicial.x, puntoinicial.y, mouseX, mouseY);
-};
-if (!Q && grafok[puntoin][puntofi] != 0) {
-  line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
-        linea.add(puntoinicial);
-        linea.add(puntofinal);
-        puntoinicial = puntofinal;
-        grafok[puntofi][puntoin]--;
-        grafok[puntoin][puntofi]--;
-        
- }
-
-break;
-case 3:
-fill(80);
-  quad(0,0,800,0,800,800,0,800);
-   fill(0);
-   textAlign(CENTER);
-   textSize(56);
-   text("GANASTE!!",width/2,height/2);
-    fill(50,50,30);
-    rect(width/2-210/2,height*5/6-70/2,210,60,15);      
+    background(255);
+    puntoin = puntos.indexOf(puntoinicial);
+    puntofi = puntos.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(200, 100, 600, 100);
+    line(200, 100, 200, 500);
+    line(400, 100, 400, 500);
+    line(200, 500, 600, 500);
+    line(600, 100, 600, 500);
+    line(400, 400, 300, 300);
+    line(300, 300, 400, 200);
+    line(400, 200, 500, 300);
+    line(500, 300, 400, 400);
+    stroke(255, 0, 0);
+    strokeWeight(nodo-10);
     fill(0);
-    textSize(50);
-    textAlign(CENTER);   
+    ellipse(400, 100, nodo, nodo);
+    ellipse(200, 100, nodo, nodo);
+    ellipse(200, 500, nodo, nodo);
+    ellipse(400, 500, nodo, nodo);
+    ellipse(400, 400, nodo, nodo);
+    ellipse(300, 300, nodo, nodo);
+    ellipse(400, 200, nodo, nodo);
+    ellipse(500, 300, nodo, nodo);
+    ellipse(600, 100, nodo, nodo);
+    ellipse(600, 500, nodo, nodo);
+
+    if (algo==true) {
+      llenar_matriz(grafoa, grafo1, 10);
+      algo = false;
+    }
+    ganar(26);
+    dibujar();
+    lineamouse(); 
+    jugar(grafoa);
+    reiniciar(grafoa, grafo1, 10);
+    home(grafoa, grafo1, 10);
+    break;
+
+  case 2:      
+    background(255);
+    puntoin = puntos2.indexOf(puntoinicial);
+    puntofi = puntos2.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(200, 100, 600, 100);
+    line(200, 100, 200, 500);
+    line(400, 100, 400, 500);
+    line(200, 500, 600, 500);
+    line(600, 100, 600, 500);
+    line(200, 300, 600, 300);
+    line(400, 100, 200, 300);
+    line(400, 100, 200, 500);
+    line(600, 100, 200, 500);
+    line(600, 100, 400, 500);
+    line(400, 100, 600, 300);
+    stroke(252, 255, 0);
+    strokeWeight(nodo-10);
+    fill(0);
+    ellipse(400, 100, nodo, nodo);
+    ellipse(200, 100, nodo, nodo);
+    ellipse(200, 500, nodo, nodo);
+    ellipse(400, 500, nodo, nodo);
+    ellipse(600, 100, nodo, nodo);
+    ellipse(600, 500, nodo, nodo);
+    ellipse(200, 300, nodo, nodo);
+    ellipse(600, 300, nodo, nodo);
+
+    if (algo==true) {
+      llenar_matriz(grafos, grafo2, 8);
+      algo = false;
+    }
+    ganar(30);
+    dibujar();
+    jugar(grafos);
+    lineamouse();
+    reiniciar(grafos, grafo2, 8);
+    home(grafos, grafo2, 8);
+    break;
+  case 3: 
+    background(55, 84, 243);
+    strokeWeight(1);
+    stroke(0);
+    //fill(80);
+    //quad(0, 0, 800, 0, 800, 800, 0, 800);
+    fill(255,255,255);
+    textAlign(CENTER);
+    textSize(56);
+    text("GANASTE!!", width/2, height/2);
+    fill(55, 243, 66);
+    rect(width/2-220/2, height*1/6-70/2, 220, 60, 15);      
+    fill(0);
+    textAlign(CENTER);
     textSize(28);
-    text("Volver al menú", width/2, height*5/6);
-    if(mousePressed ){
-      if (width/2-210/2<=mouseX && mouseX<=width/2-210/2+210 && height*5/6-70/2<=mouseY && mouseY<=height*5/6-70/2+60) {
-  level=0;
-for (int i = linea.size() - 1; i >= 0; i--) {
-  linea.remove(i);
-}
-}
-}
- break;
- case 4:
-  background(255);
-grafol = grafo3;
-puntoin = puntos3.indexOf(puntoinicial);
-puntofi = puntos3.indexOf(puntofinal);
-strokeWeight(8);
-stroke(208, 206, 212);
-line(200, 150, 600, 250);
-line(200, 150, 200, 550);
-line(600, 250, 600, 550);
-line(200, 250, 600, 350);
-line(200, 350, 600, 450);
-line(200, 450, 600, 550);
-line(200, 350, 600, 250);
-line(200, 450, 600, 350);
-line(200, 550, 600, 450);
-stroke(255, 0, 0);
-strokeWeight(10);
-fill(0);
-ellipse(200, 150, 20, 20);
-ellipse(200, 250, 20, 20);
-ellipse(200, 350, 20, 20);
-ellipse(200, 450, 20, 20);
-ellipse(200, 550, 20, 20);
-ellipse(600, 250, 20, 20);
-ellipse(600, 350, 20, 20);
-ellipse(600, 450, 20, 20);
-ellipse(600, 550, 20, 20);
-
-for (int i = 0; i<linea.size()-1; i++) {
-  line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
- }
- 
-
- if (linea.size()==28){
-level=3;
- }
- 
-
-M= new PVector(mouseX, mouseY);
-if (!P) {
-
-  line(puntoinicial.x, puntoinicial.y, mouseX, mouseY);
-};
-if (!Q && grafol[puntoin][puntofi] != 0) {
-  line(puntoinicial.x, puntoinicial.y, puntofinal.x, puntofinal.y);
-        linea.add(puntoinicial);
-        linea.add(puntofinal);
-        puntoinicial = puntofinal;
-        grafol[puntofi][puntoin]--;
-        grafol[puntoin][puntofi]--;
-        
- }
- 
- break;
-}
-}
-void jugar()
-{
+    text("Volver al menú", width/2, height*1/6);
+    control=true;
+    P=true;
+    Q=true;
+    algo=true;
+    if (mousePressed ) {
+      if (width/2-210/2<=mouseX && mouseX<=width/2-210/2+210 && height*1/6-70/2<=mouseY && mouseY<=height*1/6-70/2+60) {
+        level=0;
+        for (int i = linea.size() - 1; i >= 0; i--) {
+          linea.remove(i);
+        }
+      }
+    }
+    break;
+  case 4:
+    background(255);
+    puntoin = puntos3.indexOf(puntoinicial);
+    puntofi = puntos3.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(200, 50, 600, 150);
+    line(200, 50, 200, 450);
+    line(600, 150, 600, 450);
+    line(200, 150, 600, 250);
+    line(200, 250, 600, 350);
+    line(200, 350, 600, 450);
+    line(200, 250, 600, 150);
+    line(200, 350, 600, 250);
+    line(200, 450, 600, 350);
+    stroke(81, 254, 0);
+    strokeWeight(nodo-10);
+    fill(0);
+    ellipse(200, 50, nodo, nodo);
+    ellipse(200, 150, nodo, nodo);
+    ellipse(200, 250, nodo, nodo);
+    ellipse(200, 350, nodo, nodo);
+    ellipse(200, 450, nodo, nodo);
+    ellipse(600, 150, nodo, nodo);
+    ellipse(600, 250, nodo, nodo);
+    ellipse(600, 350, nodo, nodo);
+    ellipse(600, 450, nodo, nodo);
+    if (algo==true) {
+      llenar_matriz(grafod, grafo3, 9);
+      algo = false;
+    }    
+    ganar(28);
+    dibujar();
+    jugar(grafod);
+    lineamouse();
+    reiniciar(grafod, grafo3, 9);
+    home(grafod, grafo3, 9);
+    break;
+  case 5:
+    background(255);
+    puntoin = puntos4.indexOf(puntoinicial);
+    puntofi = puntos4.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(250, 150, 450, 250);
+    line(250, 450, 350, 350);
+    line(250, 450, 350, 250);
+    line(550, 450, 350, 350);
+    line(550, 450, 450, 350);
+    line(550, 150, 450, 350);
+    line(550, 150, 450, 250);
+    line(350, 250, 450, 250);
+    line(350, 350, 450, 350);
+    line(350, 250, 350, 350);
+    line(450, 250, 450, 350);
+    stroke(100, 100, 100);
+    line(250, 150, 350, 250);
+    stroke(0, 0, 255);
+    strokeWeight(nodo-10);
+    fill(0);
+    ellipse(250, 150, nodo, nodo);
+    ellipse(550, 150, nodo, nodo);
+    ellipse(350, 250, nodo, nodo);
+    ellipse(450, 250, nodo, nodo);
+    ellipse(350, 350, nodo, nodo);
+    ellipse(450, 350, nodo, nodo);
+    ellipse(250, 450, nodo, nodo);
+    ellipse(550, 450, nodo, nodo);
+    if (algo==true) {
+      llenar_matriz(grafof, grafo4, 8);
+      algo = false;
+    }    
+    ganar(26);
+    lineamouse();
+    jugar2(grafof);
+    dibujar();
+    stroke(50, 255, 0);
+    dibujar2();
+    reiniciar(grafof, grafo4, 8);
+    home(grafof, grafo4, 8);
+    break;
+  case 6:
+    background(255);
+    puntoin = puntos5.indexOf(puntoinicial);
+    puntofi = puntos5.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(400, 150, 300, 450);
+    line(400, 150, 500, 450);
+    line(300, 450, 500, 450);
+    line(400-100/3, 250, 400+100/3, 250);
+    line(400-100/3, 250, 400, 350);
+    line(400+100/3, 250, 400, 350);
+    stroke(100, 100, 100);    
+    line(400, 350, 400, 450);
+    stroke(131, 35, 197);
+    strokeWeight(nodo-10);
+    fill(0);
+    ellipse(400, 150, nodo, nodo);
+    ellipse(400-100/3, 250, nodo, nodo);
+    ellipse(300, 450, nodo, nodo);
+    ellipse(400, 450, nodo, nodo);
+    ellipse(400, 350, nodo, nodo);
+    ellipse(400+100/3, 250, nodo, nodo);
+    ellipse(500, 450, nodo, nodo);
+    if (algo==true) {
+      llenar_matriz(grafog, grafo5, 7);
+      algo = false;
+    }    
+    ganar(22);
+    lineamouse();
+    jugar2(grafog);
+    dibujar();    
+    stroke(255, 131, 0);
+    dibujar2();
+    reiniciar(grafog, grafo5, 7);
+    home(grafog, grafo5, 7);
+    break;
+  case 7:
+    background(255);
+    puntoin = puntos6.indexOf(puntoinicial);
+    puntofi = puntos6.indexOf(puntofinal);
+    strokeWeight(8);
+    stroke(208, 206, 212);
+    line(200, 100, 200, 500);
+    line(200, 500, 600, 500);
+    line(200, 100, 600, 500);
+    line(500, 200, 400, 500);
+    line(500, 200, 200, 500);
+    stroke(100, 100, 100);
+    line(500, 200, 200, 300);
+    stroke(255, 0, 0);
+    strokeWeight(nodo-10);
+    fill(0);
+    ellipse(200, 100, nodo, nodo);
+    ellipse(200, 300, nodo, nodo);
+    ellipse(200, 500, nodo, nodo);
+    ellipse(400, 500, nodo, nodo);
+    ellipse(600, 500, nodo, nodo);
+    ellipse(500, 200, nodo, nodo);
+    if (algo==true) {
+      llenar_matriz(grafoh, grafo6, 6);
+      algo = false;
+    }    
+    ganar(18);
+    lineamouse();
+    jugar2(grafoh);
+    dibujar();    
+    stroke(50, 255, 0);
+    dibujar2();
+    reiniciar(grafoh, grafo6, 6);
+    home(grafoh, grafo6, 6);
+    break;
+  }
 }
 void setup() {
-size(800, 800);
-puntos.add(new PVector(200, 20));
-puntos.add(new PVector(400, 20));
-puntos.add(new PVector(600, 20));
-puntos.add(new PVector(400, 120));
-puntos.add(new PVector(300, 220));
-puntos.add(new PVector(500, 220));
-puntos.add(new PVector(400, 320));
-puntos.add(new PVector(200, 420));
-puntos.add(new PVector(400, 420));
-puntos.add(new PVector(600, 420));
+  size(800, 600);
+  puntos.add(new PVector(200, 100));
+  puntos.add(new PVector(400, 100));
+  puntos.add(new PVector(600, 100));
+  puntos.add(new PVector(400, 200));
+  puntos.add(new PVector(300, 300));
+  puntos.add(new PVector(500, 300));
+  puntos.add(new PVector(400, 400));
+  puntos.add(new PVector(200, 500));
+  puntos.add(new PVector(400, 500));
+  puntos.add(new PVector(600, 500));
 
-puntos2.add(new PVector(200, 20));
-puntos2.add(new PVector(400, 20));
-puntos2.add(new PVector(600, 20));
-puntos2.add(new PVector(200, 220));
-puntos2.add(new PVector(600, 220));
-puntos2.add(new PVector(200, 420));
-puntos2.add(new PVector(400, 420));
-puntos2.add(new PVector(600, 420));
+  puntos2.add(new PVector(200, 100));
+  puntos2.add(new PVector(400, 100));
+  puntos2.add(new PVector(600, 100));
+  puntos2.add(new PVector(200, 300));
+  puntos2.add(new PVector(600, 300));
+  puntos2.add(new PVector(200, 500));
+  puntos2.add(new PVector(400, 500));
+  puntos2.add(new PVector(600, 500));
 
-puntos3.add(new PVector(200, 150));
-puntos3.add(new PVector(200, 250));
-puntos3.add(new PVector(600, 250));
-puntos3.add(new PVector(200, 350));
-puntos3.add(new PVector(600, 350));
-puntos3.add(new PVector(200, 450));
-puntos3.add(new PVector(600, 450));
-puntos3.add(new PVector(200, 550));
-puntos3.add(new PVector(600, 550));
-nodo=20;
-P=true;
-Q=true;
-control=true;
- }
+  puntos3.add(new PVector(200, 50));
+  puntos3.add(new PVector(200, 150));
+  puntos3.add(new PVector(600, 150));
+  puntos3.add(new PVector(200, 250));
+  puntos3.add(new PVector(600, 250));
+  puntos3.add(new PVector(200, 350));
+  puntos3.add(new PVector(600, 350));
+  puntos3.add(new PVector(200, 450));
+  puntos3.add(new PVector(600, 450));
+
+  puntos4.add(new PVector(250, 150));
+  puntos4.add(new PVector(550, 150));
+  puntos4.add(new PVector(350, 250));
+  puntos4.add(new PVector(450, 250));
+  puntos4.add(new PVector(350, 350));
+  puntos4.add(new PVector(450, 350));
+  puntos4.add(new PVector(250, 450));
+  puntos4.add(new PVector(550, 450));
+
+  puntos5.add(new PVector(400, 150));
+  puntos5.add(new PVector(400-100/3, 250));
+  puntos5.add(new PVector(400+100/3, 250));
+  puntos5.add(new PVector(400, 350));
+  puntos5.add(new PVector(300, 450));
+  puntos5.add(new PVector(400, 450));
+  puntos5.add(new PVector(500, 450));
+
+  puntos6.add(new PVector(200, 100));
+  puntos6.add(new PVector(200, 300));
+  puntos6.add(new PVector(200, 500));
+  puntos6.add(new PVector(400, 500));
+  puntos6.add(new PVector(600, 500));
+  puntos6.add(new PVector(500, 200));
+  nodo=20;
+  P=true;
+  Q=true;
+  control=true;
+}
 
 void draw() {
-nivel(level);
+  nivel(level);
 }
 
 void mousePressed () { 
-switch(level){
+  switch(level) {
   case 1:
-for (int i=0; i<10; i++) {
-  if (mouseX<=(puntos.get(i).x+10) && mouseX>=(puntos.get(i).x-10) && mouseY<=(puntos.get(i).y+10) && mouseY>=(puntos.get(i).y-10)) {
-     if(control==true){
-    puntoinicial = puntos.get(i);
-    control=false;
- }
-    P=false;  
-}
-}
-break;
+    mouse1(puntos, 10);
+    break;
   case 2:
-    for (int i=0; i<8; i++) {
-  if (mouseX<=(puntos2.get(i).x+10) && mouseX>=(puntos2.get(i).x-10) && mouseY<=(puntos2.get(i).y+10) && mouseY>=(puntos2.get(i).y-10)) {
-     if(control==true){
-    puntoinicial = puntos2.get(i);
-    control=false;
- }
-    P=false;  
-}
-}
-break;
-  case 3:
-  break;
+    mouse1(puntos2, 8);
+    break;
   case 4:
-    for (int i=0; i<9; i++) {
-  if (mouseX<=(puntos3.get(i).x+10) && mouseX>=(puntos3.get(i).x-10) && mouseY<=(puntos3.get(i).y+10) && mouseY>=(puntos3.get(i).y-10)) {
-     if(control==true){
-    puntoinicial = puntos3.get(i);
- }
-    control=false;
-    P=false;  
-}
-}
-  break;
-}
+    mouse1(puntos3, 9);
+    break;
+  case 5:
+    mouse1(puntos4, 8);
+    break;
+  case 6:
+    mouse1(puntos5, 7);
+    break;
+  case 7:
+    mouse1(puntos6, 6);
+    break;
+  }
 }
 void mouseReleased () {
-switch(level){
+  switch(level) {
   case 0:
-  
-  break;
+
+    break;
   case 1:
-for (int i=0; i<10; i++) {
-  if (mouseX<=(puntos.get(i).x+10) && mouseX>=(puntos.get(i).x-10) && mouseY<=(puntos.get(i).y+10) && mouseY>=(puntos.get(i).y-10)) {
-    puntofinal = puntos.get(i);
-    Q=false;
-    P=true;       
-       }
-  }
-  break;
+    mouse2(puntos, 10);
+    break;
   case 2:
-  for (int i=0; i<8; i++) {
-  if (mouseX<=(puntos2.get(i).x+10) && mouseX>=(puntos2.get(i).x-10) && mouseY<=(puntos2.get(i).y+10) && mouseY>=(puntos2.get(i).y-10)) {
-    puntofinal = puntos2.get(i);
-    Q=false;
-    P=true;       
-       }
-  }
-  break;
-  case 3:
-  break;
+    mouse2(puntos2, 8);
+    break;  
   case 4:
-    for (int i=0; i<9; i++) {
-  if (mouseX<=(puntos3.get(i).x+10) && mouseX>=(puntos3.get(i).x-10) && mouseY<=(puntos3.get(i).y+10) && mouseY>=(puntos3.get(i).y-10)) {
-    puntofinal = puntos3.get(i);
-    Q=false;
-    P=true;       
-       }
+    mouse2(puntos3, 9);
+    break;
+  case 5:
+    mouse2(puntos4, 8);
+    break;
+  case 6:
+    mouse2(puntos5, 7);
+    break;
+  case 7:
+    mouse2(puntos6, 6);
+    break;
   }
-  break;
-}
 }
