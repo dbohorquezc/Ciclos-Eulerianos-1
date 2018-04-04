@@ -131,7 +131,7 @@ void llenar_matriz(int[][] grafito1, int[][]grafito2, int a) {
   }
 }
 
-//botón de reinicio
+//Botón de reinicio
 void reiniciar(int[][] grafito3, int[][] grafito4, int z) {
   strokeWeight(2);
   stroke(0, 0, 0);
@@ -157,8 +157,6 @@ void reiniciar(int[][] grafito3, int[][] grafito4, int z) {
       puntoin=-1;
       algo=true; 
       puntofinal=pun;
-      //puntoinicial.x=0;
-      //puntoinicial.y=0;
     }
   }
 }
@@ -198,7 +196,7 @@ void lineamouse() {
   }
 }
 
-//lineas hechas
+//Lineas hechas
 void dibujar() {
   for (int i = 0; i<linea.size()-1; i++) {
     line(linea.get(i).x, linea.get(i).y, linea.get(i+1).x, linea.get(i+1).y);
@@ -274,7 +272,7 @@ void jugar2(int[][] grafito8) {
     }
   }
 }
-//función del mouse presionado
+//Función del mouse presionado
 void mouse1(ArrayList<PVector>punticos, int d) {
   for (int i=0; i<d; i++) {
     if (mouseX<=(punticos.get(i).x+nodo) && mouseX>=(punticos.get(i).x-nodo) && mouseY<=(punticos.get(i).y+nodo) && mouseY>=(punticos.get(i).y-nodo)) {
@@ -293,7 +291,7 @@ void mouse1(ArrayList<PVector>punticos, int d) {
   }
 }
 
-//Funcion de soltar el mouse
+//Función de soltar el mouse
 void mouse2(ArrayList<PVector>punticos2, int e) {
   for (int i=0; i<e; i++) {
     if (mouseX<=(punticos2.get(i).x+nodo) && mouseX>=(punticos2.get(i).x-nodo) && mouseY<=(punticos2.get(i).y+nodo) && mouseY>=(punticos2.get(i).y-nodo)) {
@@ -312,6 +310,30 @@ void mouse2(ArrayList<PVector>punticos2, int e) {
   }
 }
 
+//Función para pintar las elipses
+void dib_elipses(ArrayList<PVector>punticos4, int f) {
+  for (int i=0; i<f; i++) {
+    ellipse(punticos4.get(i).x, punticos4.get(i).y, nodo, nodo);
+  }
+}
+
+//Función para pintar lineas
+void dib_lineas(int[][] graf, int g, ArrayList<PVector>punticos5) {
+  //PVector punto1;
+  //PVector punto2;
+  for (int i=0; i<g; i++) {
+    for (int j=0; j<g; j++) {
+      if (graf[i][j]==1) {
+        stroke(208, 206, 212);
+        line((int)punticos5.get(i).x, (int)punticos5.get(i).y, (int)punticos5.get(j).x, (int)punticos5.get(j).y);
+      }
+      if (graf[i][j]==2) {
+        stroke(100, 100, 100);
+        line((int)punticos5.get(i).x, (int)punticos5.get(i).y, (int)punticos5.get(j).x, (int)punticos5.get(j).y);
+      }
+    }
+  }
+}
 
 void nivel(int a)
 {
@@ -426,35 +448,18 @@ void nivel(int a)
       }
     }
     break;
+
   case 1: 
     background(255);
     puntoin = puntos.indexOf(puntoinicial);
     puntofi = puntos.indexOf(puntofinal);
     strokeWeight(8);
-    stroke(208, 206, 212);
-    line(200, 100, 600, 100);
-    line(200, 100, 200, 500);
-    line(400, 100, 400, 500);
-    line(200, 500, 600, 500);
-    line(600, 100, 600, 500);
-    line(400, 400, 300, 300);
-    line(300, 300, 400, 200);
-    line(400, 200, 500, 300);
-    line(500, 300, 400, 400);
+    stroke(208, 206, 212);    
+    dib_lineas(grafo1, 10, puntos);
     stroke(255, 0, 0);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(400, 100, nodo, nodo);
-    ellipse(200, 100, nodo, nodo);
-    ellipse(200, 500, nodo, nodo);
-    ellipse(400, 500, nodo, nodo);
-    ellipse(400, 400, nodo, nodo);
-    ellipse(300, 300, nodo, nodo);
-    ellipse(400, 200, nodo, nodo);
-    ellipse(500, 300, nodo, nodo);
-    ellipse(600, 100, nodo, nodo);
-    ellipse(600, 500, nodo, nodo);
-
+    dib_elipses(puntos, 10);
     if (algo==true) {
       llenar_matriz(grafoa, grafo1, 10);
       algo = false;
@@ -472,30 +477,13 @@ void nivel(int a)
     puntoin = puntos2.indexOf(puntoinicial);
     puntofi = puntos2.indexOf(puntofinal);
     strokeWeight(8);
-    stroke(208, 206, 212);
-    line(200, 100, 600, 100);
-    line(200, 100, 200, 500);
-    line(400, 100, 400, 500);
-    line(200, 500, 600, 500);
-    line(600, 100, 600, 500);
-    line(200, 300, 600, 300);
-    line(400, 100, 200, 300);
-    line(400, 100, 200, 500);
-    line(600, 100, 200, 500);
-    line(600, 100, 400, 500);
-    line(400, 100, 600, 300);
+    stroke(208, 206, 212);    
+    dib_lineas(grafo2, 8, puntos2);
     stroke(252, 255, 0);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(400, 100, nodo, nodo);
-    ellipse(200, 100, nodo, nodo);
-    ellipse(200, 500, nodo, nodo);
-    ellipse(400, 500, nodo, nodo);
-    ellipse(600, 100, nodo, nodo);
-    ellipse(600, 500, nodo, nodo);
-    ellipse(200, 300, nodo, nodo);
-    ellipse(600, 300, nodo, nodo);
 
+    dib_elipses(puntos2, 8);
     if (algo==true) {
       llenar_matriz(grafos, grafo2, 8);
       algo = false;
@@ -507,6 +495,7 @@ void nivel(int a)
     reiniciar(grafos, grafo2, 8);
     home();
     break;
+
   case 3: 
     background(55, 84, 243);
     strokeWeight(1);
@@ -539,28 +528,13 @@ void nivel(int a)
     puntoin = puntos3.indexOf(puntoinicial);
     puntofi = puntos3.indexOf(puntofinal);
     strokeWeight(8);
-    stroke(208, 206, 212);
-    line(200, 50, 600, 150);
-    line(200, 50, 200, 450);
-    line(600, 150, 600, 450);
-    line(200, 150, 600, 250);
-    line(200, 250, 600, 350);
-    line(200, 350, 600, 450);
-    line(200, 250, 600, 150);
-    line(200, 350, 600, 250);
-    line(200, 450, 600, 350);
+    stroke(208, 206, 212);        
+    dib_lineas(grafo3, 9, puntos3);
     stroke(81, 254, 0);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(200, 50, nodo, nodo);
-    ellipse(200, 150, nodo, nodo);
-    ellipse(200, 250, nodo, nodo);
-    ellipse(200, 350, nodo, nodo);
-    ellipse(200, 450, nodo, nodo);
-    ellipse(600, 150, nodo, nodo);
-    ellipse(600, 250, nodo, nodo);
-    ellipse(600, 350, nodo, nodo);
-    ellipse(600, 450, nodo, nodo);
+    dib_elipses(puntos3, 9); 
+
     if (algo==true) {
       llenar_matriz(grafod, grafo3, 9);
       algo = false;
@@ -578,30 +552,12 @@ void nivel(int a)
     puntofi = puntos4.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    line(250, 150, 450, 250);
-    line(250, 450, 350, 350);
-    line(250, 450, 350, 250);
-    line(550, 450, 350, 350);
-    line(550, 450, 450, 350);
-    line(550, 150, 450, 350);
-    line(550, 150, 450, 250);
-    line(350, 250, 450, 250);
-    line(350, 350, 450, 350);
-    line(350, 250, 350, 350);
-    line(450, 250, 450, 350);
-    stroke(100, 100, 100);
-    line(250, 150, 350, 250);
+    dib_lineas(grafo4, 8, puntos4); 
     stroke(0, 0, 255);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(250, 150, nodo, nodo);
-    ellipse(550, 150, nodo, nodo);
-    ellipse(350, 250, nodo, nodo);
-    ellipse(450, 250, nodo, nodo);
-    ellipse(350, 350, nodo, nodo);
-    ellipse(450, 350, nodo, nodo);
-    ellipse(250, 450, nodo, nodo);
-    ellipse(550, 450, nodo, nodo);
+
+    dib_elipses(puntos4, 8);  
     if (algo==true) {
       llenar_matriz(grafos, grafo4, 8);
       algo = false;
@@ -621,24 +577,12 @@ void nivel(int a)
     puntofi = puntos5.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    line(400, 150, 300, 450);
-    line(400, 150, 500, 450);
-    line(300, 450, 500, 450);
-    line(400-100/3, 250, 400+100/3, 250);
-    line(400-100/3, 250, 400, 350);
-    line(400+100/3, 250, 400, 350);
-    stroke(100, 100, 100);    
-    line(400, 350, 400, 450);
+    dib_lineas(grafo5, 7, puntos5); 
     stroke(131, 35, 197);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(400, 150, nodo, nodo);
-    ellipse(400-100/3, 250, nodo, nodo);
-    ellipse(300, 450, nodo, nodo);
-    ellipse(400, 450, nodo, nodo);
-    ellipse(400, 350, nodo, nodo);
-    ellipse(400+100/3, 250, nodo, nodo);
-    ellipse(500, 450, nodo, nodo);
+    dib_elipses(puntos5, 7);
+    
     if (algo==true) {
       llenar_matriz(grafog, grafo5, 7);
       algo = false;
@@ -658,22 +602,12 @@ void nivel(int a)
     puntofi = puntos6.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    line(200, 100, 200, 500);
-    line(200, 500, 600, 500);
-    line(200, 100, 600, 500);
-    line(500, 200, 400, 500);
-    line(500, 200, 200, 500);
-    stroke(100, 100, 100);
-    line(500, 200, 200, 300);
+    dib_lineas(grafo6, 6, puntos6); 
     stroke(0, 224, 225);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(200, 100, nodo, nodo);
-    ellipse(200, 300, nodo, nodo);
-    ellipse(200, 500, nodo, nodo);
-    ellipse(400, 500, nodo, nodo);
-    ellipse(600, 500, nodo, nodo);
-    ellipse(500, 200, nodo, nodo);
+    dib_elipses(puntos6, 6);
+    
     if (algo==true) {
       llenar_matriz(grafoh, grafo6, 6);
       algo = false;
@@ -708,15 +642,8 @@ void nivel(int a)
     stroke(255, 158, 0);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(250, 90, nodo, nodo);
-    ellipse(350, 90, nodo, nodo);
-    ellipse(550, 90, nodo, nodo);
-    ellipse(250, 270, nodo, nodo);
-    ellipse(550, 330, nodo, nodo);
-    ellipse(250, 510, nodo, nodo);
-    ellipse(450, 510, nodo, nodo);
-    ellipse(550, 510, nodo, nodo);
 
+    dib_elipses(puntos7, 8);
     if (algo==true) {
       llenar_matriz(grafos, grafo7, 8);
       algo = false;
@@ -753,16 +680,7 @@ void nivel(int a)
     stroke(255, 0, 232);
     strokeWeight(nodo-10);
     fill(0);
-    ellipse(250, 100, nodo, nodo);
-    ellipse(550, 100, nodo, nodo);
-    ellipse(400, 200, nodo, nodo);
-    ellipse(600, 200, nodo, nodo);
-    ellipse(400, 300, nodo, nodo);
-    ellipse(600, 300, nodo, nodo);
-    ellipse(200, 400, nodo, nodo);
-    ellipse(400, 400, nodo, nodo);
-    ellipse(200, 500, nodo, nodo);
-    ellipse(400, 500, nodo, nodo);
+    dib_elipses(puntos8, 10);
 
     if (algo==true) {
       llenar_matriz(grafoa, grafo8, 10);
@@ -895,9 +813,6 @@ void mousePressed () {
 }
 void mouseReleased () {
   switch(level) {
-  case 0:
-
-    break;
   case 1:
     mouse2(puntos, 10);
     break;
