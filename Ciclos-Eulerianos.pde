@@ -13,6 +13,7 @@ int puntofi;
 int nodo;
 int pruebamouse;
 boolean algo = true;
+Grafo grafo_Gen= new Grafo();
 
 int[][] grafo1 ={
   {0, 1, 0, 0, 0, 0, 0, 1, 0, 0}, 
@@ -310,30 +311,9 @@ void mouse2(ArrayList<PVector>punticos2, int e) {
   }
 }
 
-//Función para pintar las elipses
-void dib_elipses(ArrayList<PVector>punticos4, int f) {
-  for (int i=0; i<f; i++) {
-    ellipse(punticos4.get(i).x, punticos4.get(i).y, nodo, nodo);
-  }
-}
 
-//Función para pintar lineas
-void dib_lineas(int[][] graf, int g, ArrayList<PVector>punticos5) {
-  //PVector punto1;
-  //PVector punto2;
-  for (int i=0; i<g; i++) {
-    for (int j=0; j<g; j++) {
-      if (graf[i][j]==1) {
-        stroke(208, 206, 212);
-        line((int)punticos5.get(i).x, (int)punticos5.get(i).y, (int)punticos5.get(j).x, (int)punticos5.get(j).y);
-      }
-      if (graf[i][j]==2) {
-        stroke(100, 100, 100);
-        line((int)punticos5.get(i).x, (int)punticos5.get(i).y, (int)punticos5.get(j).x, (int)punticos5.get(j).y);
-      }
-    }
-  }
-}
+
+
 
 void nivel(int a)
 {
@@ -454,16 +434,18 @@ void nivel(int a)
     puntoin = puntos.indexOf(puntoinicial);
     puntofi = puntos.indexOf(puntofinal);
     strokeWeight(8);
-    stroke(208, 206, 212);    
-    dib_lineas(grafo1, 10, puntos);
+    stroke(208, 206, 212);   
+    grafo_Gen.setDib_lineas(grafo1, 10, puntos);
     stroke(255, 0, 0);
     strokeWeight(nodo-10);
     fill(0);
-    dib_elipses(puntos, 10);
+    
+    grafo_Gen.setDib_elipses(puntos, 10);
     if (algo==true) {
       llenar_matriz(grafoa, grafo1, 10);
       algo = false;
     }
+   
     ganar(26);
     dibujar();
     lineamouse(); 
@@ -477,13 +459,13 @@ void nivel(int a)
     puntoin = puntos2.indexOf(puntoinicial);
     puntofi = puntos2.indexOf(puntofinal);
     strokeWeight(8);
-    stroke(208, 206, 212);    
-    dib_lineas(grafo2, 8, puntos2);
+    stroke(208, 206, 212); 
+    grafo_Gen.setDib_lineas(grafo2, 8, puntos2);
     stroke(252, 255, 0);
     strokeWeight(nodo-10);
     fill(0);
-
-    dib_elipses(puntos2, 8);
+    
+    grafo_Gen.setDib_elipses(puntos2, 8);
     if (algo==true) {
       llenar_matriz(grafos, grafo2, 8);
       algo = false;
@@ -529,11 +511,11 @@ void nivel(int a)
     puntofi = puntos3.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);        
-    dib_lineas(grafo3, 9, puntos3);
+    grafo_Gen.setDib_lineas(grafo3, 9, puntos3);
     stroke(81, 254, 0);
     strokeWeight(nodo-10);
     fill(0);
-    dib_elipses(puntos3, 9); 
+    grafo_Gen.setDib_elipses(puntos3, 9); 
 
     if (algo==true) {
       llenar_matriz(grafod, grafo3, 9);
@@ -552,12 +534,12 @@ void nivel(int a)
     puntofi = puntos4.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    dib_lineas(grafo4, 8, puntos4); 
+    grafo_Gen.setDib_lineas(grafo4, 8, puntos4); 
     stroke(0, 0, 255);
     strokeWeight(nodo-10);
     fill(0);
 
-    dib_elipses(puntos4, 8);  
+    grafo_Gen.setDib_elipses(puntos4, 8);  
     if (algo==true) {
       llenar_matriz(grafos, grafo4, 8);
       algo = false;
@@ -577,11 +559,11 @@ void nivel(int a)
     puntofi = puntos5.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    dib_lineas(grafo5, 7, puntos5); 
+    grafo_Gen.setDib_lineas(grafo5, 7, puntos5); 
     stroke(131, 35, 197);
     strokeWeight(nodo-10);
     fill(0);
-    dib_elipses(puntos5, 7);
+    grafo_Gen.setDib_elipses(puntos5, 7);
     
     if (algo==true) {
       llenar_matriz(grafog, grafo5, 7);
@@ -602,11 +584,11 @@ void nivel(int a)
     puntofi = puntos6.indexOf(puntofinal);
     strokeWeight(8);
     stroke(208, 206, 212);
-    dib_lineas(grafo6, 6, puntos6); 
+    grafo_Gen.setDib_lineas(grafo6, 6, puntos6); 
     stroke(0, 224, 225);
     strokeWeight(nodo-10);
     fill(0);
-    dib_elipses(puntos6, 6);
+    grafo_Gen.setDib_elipses(puntos6, 6);
     
     if (algo==true) {
       llenar_matriz(grafoh, grafo6, 6);
@@ -643,7 +625,7 @@ void nivel(int a)
     strokeWeight(nodo-10);
     fill(0);
 
-    dib_elipses(puntos7, 8);
+    grafo_Gen.setDib_elipses(puntos7, 8);
     if (algo==true) {
       llenar_matriz(grafos, grafo7, 8);
       algo = false;
@@ -680,7 +662,7 @@ void nivel(int a)
     stroke(255, 0, 232);
     strokeWeight(nodo-10);
     fill(0);
-    dib_elipses(puntos8, 10);
+    grafo_Gen.setDib_elipses(puntos8, 10);
 
     if (algo==true) {
       llenar_matriz(grafoa, grafo8, 10);
